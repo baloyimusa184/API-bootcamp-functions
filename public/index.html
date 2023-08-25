@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Functions</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="word-game.js" defer></script>
+    <script src="bootcamp.js"></script>
+    <link rel="stylesheet" href="style.css">
+   <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> -->
+</head>
+
+<body>
+
+    <h3 style="text-align: center;">bootcamp Functions using API</h3>
+    <h4 style="text-align: center;">Author: Musa Baloyi</h4>
+    <hr><br>
+    <div class="container" x-data= bootcampFunctions>
+
+        <div class="card">
+            <h3 class="card-title">WORD GAME</h3>
+            <div>
+                <p><strong>Longest word:</strong> <span x-text="sentence.longestWord"></span></p>
+                <p><strong>Shortest Word:</strong> <span x-text="sentence.shortestWord"></span></p>
+                <p><strong>Letter count:</strong> <span x-text="sentence.wordLengths"></span></p>
+                <input class="form-control" type="text" x-model="typedSentence"
+                    placeholder="Enter a sentence" /><br>
+                <button class="btn" @click="(game), (sentence=typedSentence), (setTimeout(() => { typedSentence=''; sentence= ''; }, 5000))">Submit</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Total Phone Bill</h3>
+            <div>
+                <p><strong>Type:</strong> <span x-text="type"></span></p>
+                <p><strong>Price:</strong> <span x-text="amount"></span></p>
+                <select class="form-control" name="type" id="type" x-model="typedBill">
+                    <option>Select type</option>
+                    <option value="call">call</option>
+                    <option value="sms">sms</option>
+                </select>
+                <input class="form-control" type="number" x-model="enteredPrice" placeholder="Enter a price" /><br>
+                <button class="btn" @click="(totalPhonebill), (type=typedBill), (amount=enteredPrice), (setTimeout(() => { type=''; typedBill= ''; amount = ''; enteredPrice= ''; }, 5000))">Submit</button>
+            </div>
+            <hr>
+            
+            <h3 class="card-title">Calculate Bill</h3>
+            <h4>Please enter names: call or sms separated by commas</h4>
+            <div>
+                <p><strong>Bill:</strong> <span x-text="billTotal"></span></p>
+                <input class="form-control" type="text" x-model="enteredBill" placeholder="Enter a bill..." /><br>
+                <button class="btn" @click="(calcBill), (phonebill=enteredBill), (setTimeout(() => { billTotal=''; enteredBill= ''; }, 5000))">Submit</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Enough Airtime</h3>
+            <div>
+                <p><strong>Result:</strong> <span x-text="TotalDff"></span></p>
+                <input class="form-control" type="text" x-model="usageEntry" placeholder="Enter usage: e.g call,sms,call" /><br>
+                <input class="form-control" type="number" x-model="amountEntered" placeholder="Enter amount..." /><br>
+                <button class="btn" @click="(airtimeCalc), (usage=usageEntry), (airtime=amountEntered), (setTimeout(() => { TotalDff='', usage='', airtime= 0; usageEntry='', amountEntered= 0; }, 5000))">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
